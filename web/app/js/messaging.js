@@ -1,17 +1,20 @@
-var app = (function (self) {
-    var bus = {}; //m { topic: [ comps ]
-    self.register = function(topic, component){
-	if self.bus.hasOnwProperty(topic){
-	    self.bus[topic].push(component);
+var app = (function (my) {
+    my.bus = {}; // { topic: [ comps ]
+    my.register = function(topic, component){
+	if (my.bus.hasOwnProperty(topic)){
+	    my.bus[topic].push(component);
 	} else {
-	    self.bus[topic] = [component];
+	    my.bus[topic] = [component];
 	}
     }
-    self.notify = function(topici, data){
-	if (self.bus.hasOwnProperty(topic)){
-	    while (var sub = self.bus.pop()){
-		sub.receive(topic, data);
+    my.notify = function(topic, data){
+	if (my.bus.hasOwnProperty(topic)){
+	    var comp;
+	    for (var i=0; i < my.bus[topic].length; i++){
+		comp = my.bus[topic][i];
+		comp.receive(topic, data);
 	    }
 	}
     }
+    return my;
 })(app || {});

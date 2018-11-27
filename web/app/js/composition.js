@@ -1,18 +1,18 @@
-var app = (function (self) {
-    var roots = [];
-    var DEBUG = true;
-    self.add_root = function (opts){
+var app = (function (my) {
+    my.roots = [];
+    my.DEBUG = true;
+    my.add_root = function (opts){
 	// Ensure parent is document.body - intercept
 	var defaults = {
 	    '<': document.body
-	    ,'app': self
+	    ,'app': my
 	};
 	root_opts = Object.assign(defaults, opts)
-	self.roots.push(new Component(root_opts));
+	my.roots.push(new Component(root_opts));
     }
-    self.init = function(){
-	if (DEBUG){
-	    self.add_component({
+    my.init = function(){
+	if (my.DEBUG){
+	    my.add_root({
 		'type': 'div'
 		,')': {
 		    'debug': function(data){
@@ -22,4 +22,5 @@ var app = (function (self) {
 	    });
 	}
     }
+    return my;
 })(app || {});
