@@ -14,6 +14,7 @@ var app = (function (my) {
 	if (my.DEBUG){
 	    my.add_root({
 		'type': 'div'
+		,'_':'Test'
 		,')': {
 		    'debug': function(data){
 			console.log(data);
