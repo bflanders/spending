@@ -1,4 +1,5 @@
-**** Introduciton ***
+Introduction
+============
 The purpose of this project is to create a non-trivial app to track monthly 
 spending.
 
@@ -8,7 +9,8 @@ ways to add spending events. Old activities can be easily edited or deleted.
 Spending events will be stored in a DB (start with postgresql) and I will
 use Bootstrap CSS framework as the front end.
 
-*** Milestones ***
+Milestones
+============
 * Initialize DB
     - Users
     - Spending categories (FK constraints)
@@ -16,30 +18,60 @@ use Bootstrap CSS framework as the front end.
 * Dashboard
     - Branding
     - Nav sidebar
-	> User preferences
-	> Reports
+	- User preferences
+	- Reports
     - Charting (this month, annual)
     - Activity table (Add, Edit, Delete)
 * CGI scripts to get data
 * Process old data into DB
 
-*** File Structure ***
+File Structure
 Below is the file structure that I will be using. I can git init this 
 directory and push this to different parts of the computer to sync
 code for different applicaitons (DB, web, scripting)
 projects
- > web
-    > lib
-	> name: dir of js files to include in apps
- > spending 
-    > web
-	> app
-	    > html: structural files
-	    > js: behavioral files
-	    > css: formatting files
-	> cgi-bin: list of cgi scripts that will support the app. This will
-	  deploy to /usr/lib/cgi-bin dir
-    > python
-	> scripts: main scripts for init and even-based execution
-	> pkgs: dir of app related packages
-    > postgresql: dir of SQL files
+````bash
+pubsub/
+├── deploy.sh: pushing changes to local machine and working directories
+├── lib: code that could be used by other projects
+│   ├── python
+│   │   └── pkgs
+│   │       ├── element.py
+│   │       ├── __init__.py
+│   │       └── web.py
+│   └── web
+│       ├── component: 
+│       │   └── js
+│       │       └── component.js
+│       └── scrollbar
+│           ├── css
+│           │   └── styles.css
+│           └── js
+│               └── scrollbar.js
+├── postgresql
+│   └── init.sql
+├── python
+│   └── pkgs
+│       ├── __init__.py
+│       └── web.py
+├── README.md
+└── web
+    ├── app
+    │   ├── index.html
+    │   ├── js
+    │   │   ├── composition.js
+    │   │   ├── main.js
+    │   │   └── messaging.js
+    │   └── lib
+    │       └── component
+    │           └── component.js
+    └── cgi-bin
+        ├── get_schemas.py
+        ├── get_table_columns.py
+        ├── get_table_data.py
+        ├── get_tables.py
+        ├── test_update_row.py
+        └── update_row.py
+
+19 directories, 23 files
+````
