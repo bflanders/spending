@@ -32,7 +32,7 @@ var app = (function(my){
     my.init = function(){
         var debug = function(data) { console.log(data); }
         var root = Div({cls:'wrapper'})
-        var branding = {_:'Databasing', icon:'bullseye'};
+        var branding = {_:'Spending', icon:'file-invoice-dollar'};
         var li_items = [
             {_:'Setting',icon:'cog'}
             ,{_:'Refresh',icon:'sync'}
